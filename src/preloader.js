@@ -1,26 +1,31 @@
 import { gsap } from 'gsap';
-
 export default class Preloader {
-    constructor() {
+    constructor(args={}) {
+        this.duration = args.duration || 3;
+        this.delay = args.delay || 3;
         this.preloader = document.getElementById('preloader');
     }
 
     show() {
-        gsap(this.preloader, {
-            opacity: 1,
-            duration: 1,
-            ease: 'power2.Out',
+        gsap.to(this.preloader, {
+            duration: 3,
+            y:'0%',
+            display: 'flex',
+            ease: 'power2.in'
         });
     }
 
     hide() {
         gsap.to(this.preloader, {
-            delay: 1,
+            duration: this.duration,
+            delay: this.delay,
+            // x:'-100%',
+            // y:'-100%',
+            scaleX: 1.5,
+            scaleY: 1.5,
             opacity: 0,
-            duration: 1,
-            y: "-100%",
             display: 'none',
-            ease: 'power2.Out',
+            ease: 'power2.out'
         });
     }
 }

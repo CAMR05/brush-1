@@ -2,12 +2,7 @@ import Preloader from "./preloader.js";
 import Line from "./line.js";
 let lines = [];
 let _line;
-let selectedColor = '#000000';
-const colorPicker = document.getElementById('color-picker');
 
-if (!colorPicker) {
-    console.error("Color picker element not found!");
-}
 const redoBtn = document.getElementById('redo-btn');
 const eraseBtn = document.getElementById('erase-btn');
 const undoBtn = document.getElementById('undo-btn');
@@ -20,6 +15,7 @@ eraseBtn.addEventListener('click', () => {
     background(0);
 });
 
+
 let brushSize = 1; // Variable para almacenar el grosor del trazo
 
 const brushSizeInput = document.getElementById('brush-size');
@@ -28,40 +24,22 @@ brushSizeInput.addEventListener('input', (event) => {
     console.log("Brush size updated:", brushSize);
 });
 
-let redoStack = [];
-
 undoBtn.addEventListener('click', () => {
     console.log("Undo clicked");
     if (lines.length > 0) {
-        const lastLine = lines.pop(); 
-        redoStack.push(lastLine); 
+        lines.pop();
     }
     console.log("Lines:", lines.length);
 });
-
-redoBtn.addEventListener('click', () => {
-    console.log("Redo clicked");
-    if (redoStack.length > 0) {
-        const lastRedoLine = redoStack.pop(); 
-        lines.push(lastRedoLine); 
-    }
-    console.log("Lines:", lines.length);
-});
-
-colorPicker.addEventListener('input', (event) => {
-    selectedColor = event.target.value; // Update the selected color
-    console.log("Selected color updated:", selectedColor);
-});
-
 
 window.setup = (event) => {
     createCanvas(windowWidth, windowHeight);
 };
 
 window.mousePressed = (event) => {
-    if (event.target.tagName === 'CANVAS') { // Check if the event occurred on the canvas
+    if (event.target.tagName === 'CANVAS') { // Verifica si el evento ocurrió en el canvas
         _line = new Line({
-            stroke: color(selectedColor), // Use the selected color
+            stroke: color(random(255), random(255), random(255)),
             strokeWeight: brushSize
         });
         lines.push(_line);
@@ -77,7 +55,7 @@ window.mouseDragged = (event) => {
 };
 
 window.draw = (event) => {
-    background(255);
+    background(0);
     lines.forEach((line) => {
         line.draw();
     });

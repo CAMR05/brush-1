@@ -3,7 +3,7 @@ import Point from './point.js';
 export default class Circles {
     constructor(args = {}) {
         this.total_points = args.total_points || 10;
-        this.palette = args.palette || ['#FFC499', '#9BFF98', '#A999FF'];
+        this.palette = args.palette || ['#A1A2A6', '#024959', '#F2C12E', '#F2AE30', '#593E25'];
         this.bg = this.palette[Math.floor(Math.random() * this.palette.length)];
         this.circles = [];
         for (let i = 1; i <= this.total_points; i++) {
@@ -13,9 +13,10 @@ export default class Circles {
                 fill: randomColor,
                 size: 300 - (20 * i),
                 friction: i * 0.1,
-                alpha: 150
+                alpha: 200
             })
             this.circles.push(point);
+            console.log(this.palette, this.bg, this.circles);
         }
     }
 

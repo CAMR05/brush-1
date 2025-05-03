@@ -3,7 +3,7 @@ import Circles from './circles.js';
 let circles;
 window.setup = (event) => {
   circles = new Circles({
-    palette: ['#FFC499', '#9BFF98', '#A999FF'],
+    palette: ['#A1A2A6', '#024959', '#F2C12E', '#F2AE30', '#593E25'],
     total_points: 10
   });
   createCanvas(windowWidth, windowHeight);

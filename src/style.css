@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Lacquer&display=swap');
 body {
   padding: 0;
   margin: 0;
@@ -22,6 +23,13 @@ canvas {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+p{
+  font-family: 'Lacquer', sans-serif;
+  font-size: 20px;
+  color: #FFF;
+  text-align: center;
 }
 
 menu {
